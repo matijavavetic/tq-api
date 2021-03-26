@@ -28,67 +28,67 @@ class FilmMapper implements JsonSerializable
         return $this->title;
     }
 
-    public function getEpisodeId()
+    public function getEpisodeId(): int
     {
         return $this->episodeId;
     }
 
-    public function getOpeningCrawl()
+    public function getOpeningCrawl(): string
     {
         return $this->openingCrawl;
     }
 
-    public function getDirector()
+    public function getDirector(): string
     {
         return $this->director;
     }
 
-    public function getProducer()
+    public function getProducer(): string
     {
         return $this->producer;
     }
 
-    public function getReleaseDate()
+    public function getReleaseDate(): string
     {
         return $this->releaseDate;
     }
 
-    public function getSpecies()
+    public function getSpecies(): array
     {
         return $this->species;
     }
 
-    public function getVehicles()
+    public function getVehicles(): array
     {
         return $this->vehicles;
     }
 
-    public function getStarships()
+    public function getStarships(): array
     {
         return $this->starships;
     }
 
-    public function getCharacters()
+    public function getCharacters(): array
     {
         return $this->characters;
     }
 
-    public function getPlanets()
+    public function getPlanets(): array
     {
         return $this->planets;
     }
 
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->created;
     }
 
-    public function getEdited()
+    public function getEdited(): string
     {
         return $this->edited;
     }

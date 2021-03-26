@@ -34,7 +34,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getEpisodeId()
+    public function getEpisodeId(): int
     {
         return $this->episodeId;
     }
@@ -46,7 +46,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getOpeningCrawl()
+    public function getOpeningCrawl(): string
     {
         return $this->openingCrawl;
     }
@@ -58,7 +58,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getDirector()
+    public function getDirector(): string
     {
         return $this->director;
     }
@@ -70,7 +70,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getProducer()
+    public function getProducer(): string
     {
         return $this->producer;
     }
@@ -82,7 +82,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getReleaseDate()
+    public function getReleaseDate(): string
     {
         return $this->releaseDate;
     }
@@ -94,7 +94,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getSpecies()
+    public function getSpecies(): array
     {
         return $this->species;
     }
@@ -106,7 +106,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getVehicles()
+    public function getVehicles(): array
     {
         return $this->vehicles;
     }
@@ -118,7 +118,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getStarships()
+    public function getStarships(): array
     {
         return $this->starships;
     }
@@ -130,7 +130,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getCharacters()
+    public function getCharacters(): array
     {
         return $this->characters;
     }
@@ -142,7 +142,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getPlanets()
+    public function getPlanets(): array
     {
         return $this->planets;
     }
@@ -154,7 +154,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -166,7 +166,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->created;
     }
@@ -178,7 +178,7 @@ class Film extends Model
         return $this;
     }
 
-    public function getEdited()
+    public function getEdited(): string
     {
         return $this->edited;
     }

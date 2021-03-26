@@ -10,7 +10,7 @@ use src\Business\Services\FilmService;
 
 class FilmController extends Controller
 {
-    public function characterFilmList(CharacterFilmListRequest $request, FilmService $filmService) : JsonResponse
+    public function characterFilmList(CharacterFilmListRequest $request, FilmService $filmService): JsonResponse
     {
         $data = $request->validationData();
 

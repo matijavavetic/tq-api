@@ -9,7 +9,7 @@ use src\Data\Mappers\FilmMapperCollection;
 
 class CharacterFilmListResponseMapperFactory
 {
-    public static function make(FilmEntityCollection $filmCollection) : CharacterFilmListResponseMapper
+    public static function make(FilmEntityCollection $filmCollection): CharacterFilmListResponseMapper
     {
         $filmMapperCollection = new FilmMapperCollection();
 

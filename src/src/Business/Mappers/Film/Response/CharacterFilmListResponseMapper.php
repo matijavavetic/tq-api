@@ -9,12 +9,12 @@ class CharacterFilmListResponseMapper implements JsonSerializable
 {
     private FilmMapperCollection $filmMappers;
 
-    public function getFilmMappers() : FilmMapperCollection
+    public function getFilmMappers(): FilmMapperCollection
     {
         return $this->filmMappers;
     }
 
-    public function setFilmMappers(FilmMapperCollection $filmMappers) : void
+    public function setFilmMappers(FilmMapperCollection $filmMappers): void
     {
         $this->filmMappers = $filmMappers;
     }

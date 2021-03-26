@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CharacterFilmListRequest extends FormRequest
 {
-    public function rules() : array
+    public function rules(): array
     {
         return [
             'characterName' => [
@@ -16,7 +16,7 @@ class CharacterFilmListRequest extends FormRequest
         ];
     }
 
-    public function validationData() : array
+    public function validationData(): array
     {
         $input = [
             'characterName' => $this->input('characterName')

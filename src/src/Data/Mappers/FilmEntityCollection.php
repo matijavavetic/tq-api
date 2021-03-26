@@ -7,7 +7,7 @@ use src\Data\Models\Film;
 
 class FilmEntityCollection extends Collection
 {
-    public function tack(Film $film)
+    public function tack(Film $film): void
     {
         $this->add($film);
     }

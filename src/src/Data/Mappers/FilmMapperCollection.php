@@ -7,7 +7,7 @@ use src\Business\Mappers\Film\FilmMapper;
 
 class FilmMapperCollection extends Collection
 {
-    public function tack(FilmMapper $mapper)
+    public function tack(FilmMapper $mapper): void
     {
         $this->add($mapper);
     }

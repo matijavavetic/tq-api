@@ -5,6 +5,7 @@ namespace src\Business\Services;
 use src\Business\Mappers\Film\Request\CharacterFilmListRequestMapper;
 use src\Applications\Http\Clients\Contracts\StorageInterface;
 use src\Business\Factories\Film\CharacterFilmListResponseMapperFactory;
+use src\Business\Mappers\Film\Response\CharacterFilmListResponseMapper;
 use src\Data\Mappers\FilmEntityCollection;
 use Symfony\Component\HttpFoundation\Response;
 use src\Data\Models\Film;
@@ -15,7 +16,7 @@ class FilmService
         protected StorageInterface $storageInterface
     ) {}
 
-    public function characterFilmList(CharacterFilmListRequestMapper $mapper)
+    public function characterFilmList(CharacterFilmListRequestMapper $mapper): CharacterFilmListResponseMapper
     {
         $character = $this->storageInterface->people($mapper->getCharacterName());
         

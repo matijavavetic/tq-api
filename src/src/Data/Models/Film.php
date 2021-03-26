@@ -27,7 +27,7 @@ class Film extends Model
         return $this->title;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
@@ -39,7 +39,7 @@ class Film extends Model
         return $this->episodeId;
     }
 
-    public function setEpisodeId(int $episodeId)
+    public function setEpisodeId(int $episodeId): self
     {
         $this->episodeId = $episodeId;
 
@@ -51,7 +51,7 @@ class Film extends Model
         return $this->openingCrawl;
     }
 
-    public function setOpeningCrawl(string $openingCrawl)
+    public function setOpeningCrawl(string $openingCrawl): self
     {
         $this->openingCrawl = $openingCrawl;
 
@@ -63,7 +63,7 @@ class Film extends Model
         return $this->director;
     }
 
-    public function setDirector(string $director)
+    public function setDirector(string $director): self
     {
         $this->director = $director;
 
@@ -75,7 +75,7 @@ class Film extends Model
         return $this->producer;
     }
 
-    public function setProducer(string $producer)
+    public function setProducer(string $producer): self
     {
         $this->producer = $producer;
 
@@ -87,7 +87,7 @@ class Film extends Model
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(string $releaseDate)
+    public function setReleaseDate(string $releaseDate): self
     {
         $this->releaseDate = $releaseDate;
 
@@ -99,7 +99,7 @@ class Film extends Model
         return $this->species;
     }
 
-    public function setSpecies(array $species)
+    public function setSpecies(array $species): self
     {
         $this->species = $species;
 
@@ -111,7 +111,7 @@ class Film extends Model
         return $this->vehicles;
     }
 
-    public function setVehicles(array $vehicles)
+    public function setVehicles(array $vehicles): self
     {
         $this->vehicles = $vehicles;
 
@@ -135,7 +135,7 @@ class Film extends Model
         return $this->characters;
     }
 
-    public function setCharacters(array $characters)
+    public function setCharacters(array $characters): self
     {
         $this->characters = $characters;
 
@@ -147,7 +147,7 @@ class Film extends Model
         return $this->planets;
     }
 
-    public function setPlanets(array $planets)
+    public function setPlanets(array $planets): self
     {
         $this->planets = $planets;
 
@@ -159,7 +159,7 @@ class Film extends Model
         return $this->url;
     }
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
@@ -171,7 +171,7 @@ class Film extends Model
         return $this->created;
     }
 
-    public function setCreated(string $created)
+    public function setCreated(string $created): self
     {
         $this->created = $created;
 
@@ -183,7 +183,7 @@ class Film extends Model
         return $this->edited;
     }
 
-    public function setEdited(string $edited)
+    public function setEdited(string $edited): self
     {
         $this->edited = $edited;
 

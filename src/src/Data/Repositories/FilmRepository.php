@@ -24,7 +24,11 @@ class FilmRepository extends AbstractRepository implements FilmRepositoryInterfa
             }
         }
 
-        return $filmCollection;
+        $filteredCollection = $filmCollection->filter(function ($film) use ($characterUrl) {
+            return in_array($characterUrl, $film->getCharacters());
+        });
+
+        return $filteredCollection;
     }
 
     public function create(array $filmData): Film

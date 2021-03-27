@@ -5,6 +5,7 @@ namespace src\Data\Repositories;
 use src\Data\Repositories\Contracts\PlanetRepositoryInterface;
 use src\Data\Entities\Planet;
 use src\Data\Mappers\PlanetEntityCollection;
+use Carbon\Carbon;
 
 class PlanetRepository extends AbstractRepository implements PlanetRepositoryInterface
 {
@@ -18,13 +19,18 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
 
         if (! empty($results)) {
             foreach ($results as $result) {
+                $date = Carbon::parse($result['created']);
                 $planet = $this->create($result);
 
                 $planetCollection->tack($planet);
             }
         }
 
-        return $planetCollection;
+        $filteredCollection = $planetCollection->filter(function ($planet) use ($createdAfter) {
+            return $planet->getCreated() > $createdAfter;
+        });
+
+        return $filteredCollection;
     }
 
     public function create(array $data): Planet
@@ -44,8 +50,8 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
             ->setResidents($data['residents'])
             ->setFilms($data['films'])
             ->setUrl($data['url'])
-            ->setCreated($data['created'])
-            ->setEdited($data['edited']);
+            ->setCreated(Carbon::parse($data['created']))
+            ->setEdited(Carbon::parse($data['edited']));
             
         return $planet;
     }

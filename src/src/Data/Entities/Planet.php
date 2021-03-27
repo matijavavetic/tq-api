@@ -3,6 +3,7 @@
 namespace src\Data\Entities;
 
 use src\Data\Entities\Contracts\PlanetEntityInterface;
+use DateTime;
 
 class Planet implements PlanetEntityInterface
 {
@@ -18,8 +19,8 @@ class Planet implements PlanetEntityInterface
     private array $films;
     private array $residents;
     private string $url;
-    private string $created;
-    private string $edited;
+    private DateTime $created;
+    private DateTime $edited;
 
     /**
      * Get the value of name
@@ -314,7 +315,7 @@ class Planet implements PlanetEntityInterface
      *
      * @return  string
      */
-    public function getCreated()
+    public function getCreated(): DateTime
     {
         return $this->created;
     }
@@ -326,7 +327,7 @@ class Planet implements PlanetEntityInterface
      *
      * @return  self
      */
-    public function setCreated(string $created)
+    public function setCreated(DateTime $created)
     {
         $this->created = $created;
 
@@ -338,7 +339,7 @@ class Planet implements PlanetEntityInterface
      *
      * @return  string
      */
-    public function getEdited()
+    public function getEdited(): DateTime
     {
         return $this->edited;
     }
@@ -350,7 +351,7 @@ class Planet implements PlanetEntityInterface
      *
      * @return  self
      */
-    public function setEdited(string $edited)
+    public function setEdited(DateTime $edited)
     {
         $this->edited = $edited;
 

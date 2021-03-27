@@ -1,8 +1,8 @@
 <?php
 
-namespace src\Data\Models;
+namespace src\Data\Entities;
 
-use src\Data\Models\Contracts\FilmEntityInterface;
+use src\Data\Entities\Contracts\FilmEntityInterface;
 
 class Film implements FilmEntityInterface
 {

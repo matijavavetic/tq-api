@@ -9,10 +9,10 @@ use src\Data\Repositories\FilmRepository;
 use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 use src\Data\Repositories\PersonRepository;
 use src\Data\Repositories\Contracts\PersonRepositoryInterface;
-use src\Data\Models\Film;
-use src\Data\Models\Person;
-use src\Data\Models\Contracts\FilmEntityInterface;
-use src\Data\Models\Contracts\PersonEntityInterface;
+use src\Data\Entities\Film;
+use src\Data\Entities\Person;
+use src\Data\Entities\Contracts\FilmEntityInterface;
+use src\Data\Entities\Contracts\PersonEntityInterface;
 
 class DependencyConfigurationProvider extends ServiceProvider
 {

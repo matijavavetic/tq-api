@@ -3,7 +3,7 @@
 namespace src\Data\Repositories;
 
 use src\Data\Repositories\Contracts\PersonRepositoryInterface;
-use src\Data\Models\Person;
+use src\Data\Entities\Person;
 
 class PersonRepository extends AbstractRepository implements PersonRepositoryInterface
 {

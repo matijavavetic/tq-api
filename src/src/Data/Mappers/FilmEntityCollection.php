@@ -3,7 +3,7 @@
 namespace src\Data\Mappers;
 
 use Illuminate\Database\Eloquent\Collection;
-use src\Data\Models\Contracts\FilmEntityInterface;
+use src\Data\Entities\Contracts\FilmEntityInterface;
 
 class FilmEntityCollection extends Collection
 {

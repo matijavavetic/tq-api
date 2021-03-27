@@ -4,7 +4,7 @@ namespace src\Data\Repositories;
 
 use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 use src\Data\Mappers\FilmEntityCollection;
-use src\Data\Models\Film;
+use src\Data\Entities\Film;
 
 class FilmRepository extends AbstractRepository implements FilmRepositoryInterface
 {

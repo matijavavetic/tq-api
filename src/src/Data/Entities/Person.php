@@ -1,8 +1,8 @@
 <?php
 
-namespace src\Data\Models;
+namespace src\Data\Entities;
 
-use src\Data\Models\Contracts\PersonEntityInterface;
+use src\Data\Entities\Contracts\PersonEntityInterface;
 
 class Person implements PersonEntityInterface
 {

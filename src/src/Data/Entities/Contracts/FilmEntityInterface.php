@@ -1,6 +1,6 @@
 <?
 
-namespace src\Data\Models\Contracts;
+namespace src\Data\Entities\Contracts;
 
 interface FilmEntityInterface
 {

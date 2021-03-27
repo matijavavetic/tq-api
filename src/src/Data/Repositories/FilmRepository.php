@@ -12,18 +12,13 @@ class FilmRepository extends AbstractRepository implements FilmRepositoryInterfa
     {
         $response = $this->apiClient->fetchFilms();
 
-        $films = $response['results'];
+        $results = $response['results'];
 
         $filmCollection = new FilmEntityCollection();
 
-        if (! empty($films)) {
-            foreach ($films as $key => $value) {
-                if (! in_array($characterUrl, $films[$key]['characters'])) {
-                    unset($films[$key]);
-                    continue;
-                }
-
-                $film = $this->create($films[$key]);
+        if (! empty($results)) {
+            foreach ($results as $result) {
+                $film = $this->create($result);
 
                 $filmCollection->tack($film);
             }

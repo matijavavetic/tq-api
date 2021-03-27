@@ -35,6 +35,15 @@ class StarWarsApiClient implements ApiClientInterface
         return $responseBody;
     }
 
+    public function fetchPlanets(): array
+    {
+        $response = $this->client->request('GET', SWApiEndpoint::PLANETS);
+
+        $responseBody = $this->getResponseBody($response);
+
+        return $responseBody;
+    }
+
     protected function getResponseBody(Response $response): array
     {
         return json_decode($response->getBody(), true);

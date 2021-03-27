@@ -2,10 +2,7 @@
 
 namespace src\Data\Models;
 
-use DateTime;
-use Illuminate\Database\Eloquent\Model;
-
-class Film extends Model
+class Film
 {
     protected string $title;
     protected int $episodeId;

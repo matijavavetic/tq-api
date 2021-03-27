@@ -4,7 +4,7 @@ namespace src\Applications\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use src\Applications\Http\FormRequests\Film\CharacterFilmListRequest;
-use src\Applications\Http\Factories\Film\CharacterFilmListRequestMapperFactory;
+use src\Applications\Factories\Film\CharacterFilmListRequestMapperFactory;
 use Symfony\Component\HttpFoundation\Response;
 use src\Business\Services\FilmService;
 

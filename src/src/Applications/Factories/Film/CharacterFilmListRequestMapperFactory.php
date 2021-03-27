@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Applications\Http\Factories\Film;
+namespace src\Applications\Factories\Film;
 
 use src\Business\Mappers\Film\Request\CharacterFilmListRequestMapper;
 

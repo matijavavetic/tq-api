@@ -12,8 +12,8 @@ use src\Data\Repositories\Contracts\PersonRepositoryInterface;
 class FilmService
 {
     public function __construct(
-        protected FilmRepositoryInterface $filmRepository,
-        protected PersonRepositoryInterface $personRepository
+        private FilmRepositoryInterface $filmRepository,
+        private PersonRepositoryInterface $personRepository
     ) {}
 
     public function characterFilmList(CharacterFilmListRequestMapper $mapper): CharacterFilmListResponseMapper

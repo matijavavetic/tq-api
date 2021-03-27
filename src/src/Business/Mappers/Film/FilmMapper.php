@@ -7,20 +7,20 @@ use JsonSerializable;
 class FilmMapper implements JsonSerializable
 {
     public function __construct(
-        protected string $title,
-        protected int $episodeId,
-        protected string $openingCrawl,
-        protected string $director,
-        protected string $producer,
-        protected string $releaseDate,
-        protected array $species,
-        protected array $vehicles,
-        protected array $starships,
-        protected array $characters,
-        protected array $planets,
-        protected string $url,
-        protected string $created,
-        protected string $edited
+        private string $title,
+        private int $episodeId,
+        private string $openingCrawl,
+        private string $director,
+        private string $producer,
+        private string $releaseDate,
+        private array $species,
+        private array $vehicles,
+        private array $starships,
+        private array $characters,
+        private array $planets,
+        private string $url,
+        private string $created,
+        private string $edited
     ) {}
 
     public function getTitle(): string

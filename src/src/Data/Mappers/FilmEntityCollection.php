@@ -3,11 +3,11 @@
 namespace src\Data\Mappers;
 
 use Illuminate\Database\Eloquent\Collection;
-use src\Data\Models\Film;
+use src\Data\Models\Contracts\FilmEntityInterface;
 
 class FilmEntityCollection extends Collection
 {
-    public function tack(Film $film): void
+    public function tack(FilmEntityInterface $film): void
     {
         $this->add($film);
     }

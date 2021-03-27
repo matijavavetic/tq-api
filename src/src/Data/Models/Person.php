@@ -2,24 +2,26 @@
 
 namespace src\Data\Models;
 
-class Person
+use src\Data\Models\Contracts\PersonEntityInterface;
+
+class Person implements PersonEntityInterface
 {
-    protected string $name;
-    protected string $birthYear;
-    protected string $eyeColor;
-    protected string $gender;
-    protected string $hairColor;
-    protected string $height;
-    protected string $mass;
-    protected string $skinColor;
-    protected string $homeWorld;
-    protected array $films;
-    protected array $species;
-    protected array $starships;
-    protected array $vehicles;
-    protected string $url;
-    protected string $created;
-    protected string $edited;
+    private string $name;
+    private string $birthYear;
+    private string $eyeColor;
+    private string $gender;
+    private string $hairColor;
+    private string $height;
+    private string $mass;
+    private string $skinColor;
+    private string $homeWorld;
+    private array $films;
+    private array $species;
+    private array $starships;
+    private array $vehicles;
+    private string $url;
+    private string $created;
+    private string $edited;
 
     public function getName(): string
     {

@@ -15,27 +15,34 @@ class PersonRepository extends AbstractRepository implements PersonRepositoryInt
 
         if (! empty($response['results'])) {
             foreach ($response['results'] as $personData) {
-                $person = new Person(); 
-
-                $person
-                    ->setName($personData['name'])
-                    ->setHeight($personData['height'])
-                    ->setMass($personData['mass'])
-                    ->setHairColor($personData['hair_color'])
-                    ->setSkinColor($personData['skin_color'])
-                    ->setEyeColor($personData['eye_color'])
-                    ->setBirthYear($personData['birth_year'])
-                    ->setGender($personData['gender'])
-                    ->setHomeWorld($personData['homeworld'])
-                    ->setFilms($personData['films'])
-                    ->setSpecies($personData['species'])
-                    ->setVehicles($personData['vehicles'])
-                    ->setStarships($personData['starships'])
-                    ->setCreated($personData['created'])
-                    ->setEdited($personData['edited'])
-                    ->setUrl($personData['url']);
+                $person = $this->create($personData);
             }
         }
+
+        return $person;
+    }
+
+    public function create(array $personData): Person
+    {
+        $person = new Person(); 
+
+        $person
+            ->setName($personData['name'])
+            ->setHeight($personData['height'])
+            ->setMass($personData['mass'])
+            ->setHairColor($personData['hair_color'])
+            ->setSkinColor($personData['skin_color'])
+            ->setEyeColor($personData['eye_color'])
+            ->setBirthYear($personData['birth_year'])
+            ->setGender($personData['gender'])
+            ->setHomeWorld($personData['homeworld'])
+            ->setFilms($personData['films'])
+            ->setSpecies($personData['species'])
+            ->setVehicles($personData['vehicles'])
+            ->setStarships($personData['starships'])
+            ->setCreated($personData['created'])
+            ->setEdited($personData['edited'])
+            ->setUrl($personData['url']);
 
         return $person;
     }

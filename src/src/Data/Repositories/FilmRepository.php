@@ -23,28 +23,35 @@ class FilmRepository extends AbstractRepository implements FilmRepositoryInterfa
                     continue;
                 }
 
-                $film = new Film();
-
-                $film
-                    ->setTitle($films[$key]['title'])
-                    ->setEpisodeId($films[$key]['episode_id'])
-                    ->setOpeningCrawl($films[$key]['opening_crawl'])
-                    ->setDirector($films[$key]['director'])
-                    ->setProducer($films[$key]['producer'])
-                    ->setReleaseDate($films[$key]['release_date'])
-                    ->setSpecies($films[$key]['species'])
-                    ->setVehicles($films[$key]['vehicles'])
-                    ->setStarships($films[$key]['starships'])
-                    ->setCharacters($films[$key]['characters'])
-                    ->setPlanets($films[$key]['planets'])
-                    ->setUrl($films[$key]['url'])
-                    ->setCreated($films[$key]['created'])
-                    ->setEdited($films[$key]['edited']);
+                $film = $this->create($films[$key]);
 
                 $filmCollection->tack($film);
             }
         }
 
         return $filmCollection;
+    }
+
+    public function create(array $filmData): Film
+    {
+        $film = new Film();
+
+        $film
+            ->setTitle($filmData['title'])
+            ->setEpisodeId($filmData['episode_id'])
+            ->setOpeningCrawl($filmData['opening_crawl'])
+            ->setDirector($filmData['director'])
+            ->setProducer($filmData['producer'])
+            ->setReleaseDate($filmData['release_date'])
+            ->setSpecies($filmData['species'])
+            ->setVehicles($filmData['vehicles'])
+            ->setStarships($filmData['starships'])
+            ->setCharacters($filmData['characters'])
+            ->setPlanets($filmData['planets'])
+            ->setUrl($filmData['url'])
+            ->setCreated($filmData['created'])
+            ->setEdited($filmData['edited']);
+            
+        return $film;
     }
 }

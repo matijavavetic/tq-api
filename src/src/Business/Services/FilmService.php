@@ -8,6 +8,7 @@ use src\Business\Mappers\Film\Response\CharacterFilmListResponseMapper;
 use Symfony\Component\HttpFoundation\Response;
 use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 use src\Data\Repositories\Contracts\PersonRepositoryInterface;
+use src\Business\Exceptions\NotFoundException;
 
 class FilmService
 {
@@ -21,7 +22,7 @@ class FilmService
         $character = $this->personRepository->findOneByName($mapper->getCharacterName());
         
         if (! $character) {
-            throw new \Exception('No characters found.', Response::HTTP_NOT_FOUND);    
+            throw new NotFoundException('No characters found.', Response::HTTP_NOT_FOUND);    
         }
 
         $films = $this->filmRepository->findAllByCharacterUrl($character->getUrl());

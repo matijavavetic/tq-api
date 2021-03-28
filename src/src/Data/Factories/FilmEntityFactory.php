@@ -2,7 +2,6 @@
 
 namespace src\Data\Factories;
 
-use src\Data\Mappers\PlanetEntityCollection;
 use src\Data\Entities\Film;
 
 class FilmEntityFactory

@@ -3,8 +3,8 @@
 namespace src\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use src\Applications\Clients\Contracts\StorageInterface;
-use src\Applications\Clients\StarWarsApiClient;
+use src\Data\Contracts\StorageInterface;
+use src\Data\Storage\StarWarsApiClient;
 use src\Data\Repositories\FilmRepository;
 use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 use src\Data\Repositories\PersonRepository;
@@ -26,7 +26,7 @@ class DependencyConfigurationProvider extends ServiceProvider
 {
     public function BindAbstractToConcrete()
     {
-        // Storages
+        // Storage
         $this->app->bind(StorageInterface::class, StarWarsApiClient::class);
 
         // Repositories

@@ -2,7 +2,7 @@
 
 namespace src\Data\Repositories;
 
-use src\Applications\Clients\Contracts\StorageInterface;
+use src\Data\Contracts\StorageInterface;
 
 abstract class AbstractRepository
 {

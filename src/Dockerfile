@@ -1,14 +1,14 @@
 FROM php:8.0-fpm-alpine
 
-COPY . /var/www/typeqast-api
+COPY . /var/www/sw-api
 
-WORKDIR /var/www/typeqast-api
+WORKDIR /var/www/sw-api
 
 RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
  && composer install --no-interaction --optimize-autoloader #--no-dev
 
-RUN chown -R www-data:www-data /var/www/typeqast-api \
-    && chmod -R 750 /var/www/typeqast-api
+RUN chown -R www-data:www-data /var/www/sw-api \
+    && chmod -R 750 /var/www/sw-api
 
 RUN apk update && \
     apk add  --no-cache grep git mysql-client curl libmcrypt zip libzip libzip-dev libmcrypt-dev openssh-client icu-dev \

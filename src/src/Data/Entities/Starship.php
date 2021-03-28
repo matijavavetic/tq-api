@@ -13,7 +13,7 @@ class Starship implements StarshipEntityInterface
     private string $costInCredits;
     private string $length;
     private string $crew;
-    private string $passengers;
+    private int $passengers;
     private string $maxAtmospheringSpeed;
     private string $hyperdriveRating;
     private string $MGLT;
@@ -145,12 +145,12 @@ class Starship implements StarshipEntityInterface
         return $this;
     }
 
-    public function getPassengers()
+    public function getPassengers(): int
     {
         return $this->passengers;
     }
 
-    public function setPassengers(string $passengers)
+    public function setPassengers(int $passengers)
     {
         $this->passengers = $passengers;
 

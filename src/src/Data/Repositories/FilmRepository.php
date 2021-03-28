@@ -2,8 +2,8 @@
 
 namespace src\Data\Repositories;
 
-use src\Data\Entities\Film;
-use src\Applications\Enums\SWApiEndpoint;
+use src\Data\Factories\FilmEntityFactory;
+use src\Data\Enums\SWApiEndpoint;
 use src\Data\Mappers\FilmEntityCollection;
 use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 
@@ -11,15 +11,13 @@ class FilmRepository extends AbstractRepository implements FilmRepositoryInterfa
 {
     public function findAllByCharacterUrl(string $characterUrl): FilmEntityCollection
     {
-        $response = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::FILMS));
-
-        $results = $response['results'];
+        $results = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::FILMS));
 
         $filmCollection = new FilmEntityCollection();
 
         if (! empty($results)) {
             foreach ($results as $result) {
-                $film = $this->create($result);
+                $film = FilmEntityFactory::make($result);
 
                 $filmCollection->tack($film);
             }
@@ -30,28 +28,5 @@ class FilmRepository extends AbstractRepository implements FilmRepositoryInterfa
         });
 
         return $filteredCollection;
-    }
-
-    public function create(array $filmData): Film
-    {
-        $film = new Film();
-
-        $film
-            ->setTitle($filmData['title'])
-            ->setEpisodeId($filmData['episode_id'])
-            ->setOpeningCrawl($filmData['opening_crawl'])
-            ->setDirector($filmData['director'])
-            ->setProducer($filmData['producer'])
-            ->setReleaseDate($filmData['release_date'])
-            ->setSpecies($filmData['species'])
-            ->setVehicles($filmData['vehicles'])
-            ->setStarships($filmData['starships'])
-            ->setCharacters($filmData['characters'])
-            ->setPlanets($filmData['planets'])
-            ->setUrl($filmData['url'])
-            ->setCreated($filmData['created'])
-            ->setEdited($filmData['edited']);
-            
-        return $film;
     }
 }

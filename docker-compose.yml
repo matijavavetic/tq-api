@@ -5,15 +5,15 @@ services:
     ports:
       - 80:80
     depends_on:
-      - typeqast-api
+      - sw-api
     networks:
       - app-network
-  typeqast-api:
-    image: typeqast-api
+  sw-api:
+    image: sw-api
     ports:
       - 9000:9000
     volumes:
-      - ./src/.:/var/www/typeqast-api
+      - ./src/.:/var/www/sw-api
     depends_on:
       - mysql
     networks:
@@ -25,7 +25,7 @@ services:
     expose:
       - '3306'
     environment:
-      MYSQL_DATABASE: typeqast_api_db
+      MYSQL_DATABASE: sw_api_db
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - dbdata:/var/lib/mysql

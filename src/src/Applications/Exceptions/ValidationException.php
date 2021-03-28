@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Applications\Http\Exceptions;
+namespace src\Applications\Exceptions;
 
 use Illuminate\Validation\ValidationException as BaseValidationException;
 use Symfony\Component\HttpFoundation\Response;

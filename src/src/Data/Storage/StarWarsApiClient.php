@@ -1,10 +1,10 @@
 <?
 
-namespace src\Applications\Clients;
+namespace src\Data\Storage;
 
 use GuzzleHttp\Client;
-use src\Applications\Enums\SWApiEndpoint;
-use src\Applications\Clients\Contracts\StorageInterface;
+use src\Data\Enums\SWApiEndpoint;
+use src\Data\Contracts\StorageInterface;
 use GuzzleHttp\Psr7\Response;
 
 class StarWarsApiClient implements StorageInterface
@@ -19,7 +19,22 @@ class StarWarsApiClient implements StorageInterface
 
         $responseBody = $this->getResponseBody($response);
 
-        return $responseBody;
+        $responseResults = $responseBody['results'];
+
+        if (! is_null($responseBody['next'])) {
+            while (true) {
+                $response = $this->client->request('GET', $responseBody['next']);
+                $responseBody = $this->getResponseBody($response);
+
+                $responseResults = array_merge($responseResults, $responseBody['results']);
+
+                if ($responseBody['next'] === null) {
+                    break;
+                }
+            }
+        }
+
+        return $responseResults;
     }
 
     private function getResponseBody(Response $response): array

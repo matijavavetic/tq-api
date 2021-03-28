@@ -4,7 +4,7 @@ namespace src\Data\Repositories;
 
 use src\Data\Repositories\Contracts\PersonRepositoryInterface;
 use src\Data\Entities\Person;
-use src\Applications\Enums\SWApiEndpoint;
+use src\Data\Enums\SWApiEndpoint;
 
 class PersonRepository extends AbstractRepository implements PersonRepositoryInterface
 {

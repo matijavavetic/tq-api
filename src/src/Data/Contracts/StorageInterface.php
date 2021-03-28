@@ -1,6 +1,6 @@
 <?
 
-namespace src\Applications\Clients\Contracts;
+namespace src\Data\Contracts;
 
 interface StorageInterface
 {

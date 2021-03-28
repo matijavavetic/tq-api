@@ -11,16 +11,18 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PlanetListEndpointTest extends TestCase
 {
-    public function testSendValidDataExceptOkResponse()
+    const ENDPOINT = 'http://127.0.0.1/api/planet.list';
+
+    public function testSendValidDataExceptOkResponse(): void
     {
-        $response = $this->json('POST', 'http://127.0.0.1/api/planet.list');
+        $response = $this->json('POST', self::ENDPOINT);
 
         $response
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonFragment(['name' => 'Tatooine']);
     }
 
-    public function testNoPlanetsFoundExpectException()
+    public function testNoPlanetsFoundExpectException(): void
     { 
         $this->withoutExceptionHandling();
         
@@ -31,6 +33,6 @@ class PlanetListEndpointTest extends TestCase
             'createdAfter' => '9999-01-01'
         ];
 
-        $this->json('POST', 'http://127.0.0.1/api/planet.list', $payload);
+        $this->json('POST', self::ENDPOINT, $payload);
     }
 }

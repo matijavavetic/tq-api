@@ -2,11 +2,11 @@
 
 namespace src\Data\Repositories;
 
-use src\Applications\Clients\Contracts\ApiClientInterface;
+use src\Applications\Clients\Contracts\StorageInterface;
 
 abstract class AbstractRepository
 {
     public function __construct(
-        protected ApiClientInterface $apiClient
+        protected StorageInterface $storage
     ) {}
 }

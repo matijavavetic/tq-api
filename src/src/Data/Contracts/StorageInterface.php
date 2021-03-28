@@ -2,7 +2,7 @@
 
 namespace src\Applications\Clients\Contracts;
 
-interface ApiClientInterface
+interface StorageInterface
 {
     
 }

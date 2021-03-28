@@ -2,15 +2,16 @@
 
 namespace src\Data\Repositories;
 
-use src\Data\Repositories\Contracts\FilmRepositoryInterface;
-use src\Data\Mappers\FilmEntityCollection;
 use src\Data\Entities\Film;
+use src\Applications\Enums\SWApiEndpoint;
+use src\Data\Mappers\FilmEntityCollection;
+use src\Data\Repositories\Contracts\FilmRepositoryInterface;
 
 class FilmRepository extends AbstractRepository implements FilmRepositoryInterface
 {
     public function findAllByCharacterUrl(string $characterUrl): FilmEntityCollection
     {
-        $response = $this->apiClient->fetchFilms();
+        $response = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::FILMS));
 
         $results = $response['results'];
 

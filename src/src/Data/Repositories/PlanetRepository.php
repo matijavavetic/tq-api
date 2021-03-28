@@ -11,7 +11,7 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
 {
     public function list(string $createdAfter): PlanetEntityCollection
     {
-        $response = $this->apiClient->fetchPlanets();
+        $response = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::PLANETS));
 
         $results = $response['results'];
 
@@ -19,7 +19,6 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
 
         if (! empty($results)) {
             foreach ($results as $result) {
-                $date = Carbon::parse($result['created']);
                 $planet = $this->create($result);
 
                 $planetCollection->tack($planet);

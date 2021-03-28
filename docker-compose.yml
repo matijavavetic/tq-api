@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    image: typeqast-api-nginx
+    image: nginx
     ports:
       - 80:80
     depends_on:
@@ -19,7 +19,7 @@ services:
     networks:
       - app-network
   mysql:
-    image: typeqast-api-mysql
+    image: mysql
     ports:
       - '3306:3306'
     expose:

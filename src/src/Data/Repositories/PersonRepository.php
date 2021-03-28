@@ -4,12 +4,13 @@ namespace src\Data\Repositories;
 
 use src\Data\Repositories\Contracts\PersonRepositoryInterface;
 use src\Data\Entities\Person;
+use src\Applications\Enums\SWApiEndpoint;
 
 class PersonRepository extends AbstractRepository implements PersonRepositoryInterface
 {
     public function findOneByName(string $name): ?Person
     {
-        $response = $this->apiClient->fetchPeople($name);
+        $response = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::PEOPLE), $name);
 
         $person = null;
 

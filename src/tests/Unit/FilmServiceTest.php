@@ -24,14 +24,12 @@ class FilmServiceTest extends AbstractUnitTest
     /** @var PersonRepositoryInterface */
     private $personRepository;
 
-    private StorageInterface $storage;
     private FilmService $filmService;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->storage = $this->app->make(StorageInterface::class);
         $this->filmRepository = $this->prophesize(FilmRepositoryInterface::class);
         $this->personRepository = $this->prophesize(PersonRepositoryInterface::class);
         $this->filmService = new FilmService(
@@ -42,25 +40,17 @@ class FilmServiceTest extends AbstractUnitTest
 
     public function testListActionReturnsSuccessAndListResponseMapper(): void
     {
-        $name = 'Luke Skywalker';
-
-        $fetchPerson = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::PEOPLE), $name);
-        $fetchFilm = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::FILMS));
-
-        $person = PersonEntityFactory::make($fetchPerson[0]);
-        $film = FilmEntityFactory::make($fetchFilm[0]);
-
         $this->personRepository
-            ->findOneByName($name)
+            ->findOneByName($this->person->getName())
             ->shouldBeCalledOnce()
-            ->willReturn($person);  
+            ->willReturn($this->person);  
 
         $this->filmRepository
-            ->findAllByCharacterUrl($person->getUrl())
+            ->findAllByCharacterUrl($this->person->getUrl())
             ->shouldBeCalledOnce()
-            ->willReturn(new FilmEntityCollection([$film]));
+            ->willReturn(new FilmEntityCollection([$this->film]));
             
-        $this->filmService->characterFilmList(new CharacterFilmListRequestMapper($name));
+        $this->filmService->characterFilmList(new CharacterFilmListRequestMapper($this->person->getName()));
     }
 
     public function testWillThrowExceptionIfNoCharacterFound(): void
@@ -83,20 +73,16 @@ class FilmServiceTest extends AbstractUnitTest
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage('No films found.');
 
-        $fetchPerson = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::PEOPLE), 'Luke Skywalker');
-
-        $person = PersonEntityFactory::make($fetchPerson[0]);
-
         $this->personRepository
-            ->findOneByName($person->getName())
+            ->findOneByName($this->person->getName())
             ->shouldBeCalledOnce()
-            ->willReturn($person); 
+            ->willReturn($this->person); 
 
         $this->filmRepository
-            ->findAllByCharacterUrl($person->getUrl())
+            ->findAllByCharacterUrl($this->person->getUrl())
             ->shouldBeCalledOnce()
             ->willReturn(new FilmEntityCollection());
             
-        $this->filmService->characterFilmList(new CharacterFilmListRequestMapper($person->getName()));     
+        $this->filmService->characterFilmList(new CharacterFilmListRequestMapper($this->person->getName()));     
     }
 }

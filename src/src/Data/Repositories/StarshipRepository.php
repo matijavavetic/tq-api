@@ -13,7 +13,7 @@ class StarshipRepository extends AbstractRepository implements StarshipRepositor
     {
         $results = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::STARSHIPS));
 
-         $starshipCollection = new StarshipEntityCollection();
+        $starshipCollection = new StarshipEntityCollection();
 
         if (! empty($results)) {
             foreach ($results as $result) {

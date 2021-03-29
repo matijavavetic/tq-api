@@ -2,11 +2,12 @@
 
 namespace src\Data\Factories;
 
+use src\Data\Entities\Contracts\StarshipEntityInterface;
 use src\Data\Entities\Starship;
 
 class StarshipEntityFactory
 {
-    public static function make(array $data): Starship
+    public static function make(array $data): StarshipEntityInterface
     {
         $starship = new Starship();
 

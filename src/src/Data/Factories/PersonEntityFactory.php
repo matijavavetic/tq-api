@@ -2,11 +2,12 @@
 
 namespace src\Data\Factories;
 
+use src\Data\Entities\Contracts\PersonEntityInterface;
 use src\Data\Entities\Person;
 
 class PersonEntityFactory
 {
-    public static function make(array $data): Person
+    public static function make(array $data): PersonEntityInterface
     {
         $person = new Person(); 
 

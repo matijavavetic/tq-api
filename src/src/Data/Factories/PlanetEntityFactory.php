@@ -2,12 +2,13 @@
 
 namespace src\Data\Factories;
 
+use src\Data\Entities\Contracts\PlanetEntityInterface;
 use src\Data\Entities\Planet;
 use Carbon\Carbon;
 
 class PlanetEntityFactory
 {
-    public static function make(array $data): Planet
+    public static function make(array $data): PlanetEntityInterface
     {
         $planet = new Planet();
 

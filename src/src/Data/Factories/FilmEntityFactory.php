@@ -2,12 +2,13 @@
 
 namespace src\Data\Factories;
 
+use src\Data\Entities\Contracts\FilmEntityInterface;
 use src\Data\Entities\Film;
-use src\Data\Mappers\StarshipEntityCollection;
+
 
 class FilmEntityFactory
 {
-    public static function make(array $data): Film
+    public static function make(array $data): FilmEntityInterface
     {
         $film = new Film();
 
@@ -28,10 +29,5 @@ class FilmEntityFactory
             ->setEdited($data['edited']);
             
         return $film;
-    }
-
-    public static function collection(): StarshipEntityCollection
-    {
-        return new StarshipEntityCollection();
     }
 }

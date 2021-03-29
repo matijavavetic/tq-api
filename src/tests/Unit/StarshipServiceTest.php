@@ -21,14 +21,12 @@ class StarshipServiceTest extends AbstractUnitTest
     /** @var StarshipRepositoryInterface */
     private $starshipRepository;
 
-    private StorageInterface $storage;
     private StarshipService $starshipService;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->storage = $this->app->make(StorageInterface::class);
         $this->starshipRepository = $this->prophesize(StarshipRepositoryInterface::class);
         $this->starshipService = new StarshipService(
             $this->starshipRepository->reveal()
@@ -37,14 +35,10 @@ class StarshipServiceTest extends AbstractUnitTest
 
     public function testListActionReturnsSuccessAndListResponseMapper(): void
     {
-        $fetch = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::STARSHIPS));
-
-        $starship = StarshipEntityFactory::make($fetch[0]);
-
         $this->starshipRepository
             ->list(2)
             ->shouldBeCalledOnce()
-            ->willReturn(new StarshipEntityCollection([$starship]));  
+            ->willReturn(new StarshipEntityCollection([$this->starship]));  
             
         $listResponse = $this->starshipService->list(new StarshipListRequestMapper(2));
     }

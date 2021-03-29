@@ -13,7 +13,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - ./src/.:/var/www/sw-api
+      - ./src/api/.:/var/www/sw-api
     depends_on:
       - mysql
     networks:

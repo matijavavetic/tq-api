@@ -28,7 +28,7 @@ abstract class AbstractUnitTest extends TestCase
         $this->starship = $this->getStarship();
     }
 
-    protected function getPerson(): PersonEntityInterface
+    private function getPerson(): PersonEntityInterface
     {
         $data = [
             "name" => "Luke Skywalker",
@@ -62,7 +62,7 @@ abstract class AbstractUnitTest extends TestCase
         return $person;
     }
 
-    protected function getFilm(): FilmEntityInterface
+    private function getFilm(): FilmEntityInterface
     {
         $data = [
             "characters" => [
@@ -96,7 +96,7 @@ abstract class AbstractUnitTest extends TestCase
         return $film;
     }
 
-    protected function getStarship(): StarshipEntityInterface
+    private function getStarship(): StarshipEntityInterface
     {
         $data = [
             "name" => "CR90 corvette",

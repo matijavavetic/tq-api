@@ -9,11 +9,11 @@ use src\Data\Enums\SWApiEndpoint;
 
 class StarshipRepository extends AbstractRepository implements StarshipRepositoryInterface
 {
-    public function list(int $passengers): StarshipEntityCollection
+    public function list(?int $passengers = 84000): StarshipEntityCollection
     {
         $results = $this->storage->fetch(SWApiEndpoint::fromValue(SWApiEndpoint::STARSHIPS));
 
-        $starshipCollection = new StarshipEntityCollection();
+         $starshipCollection = new StarshipEntityCollection();
 
         if (! empty($results)) {
             foreach ($results as $result) {

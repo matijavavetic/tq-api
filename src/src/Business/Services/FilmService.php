@@ -27,6 +27,10 @@ class FilmService
 
         $films = $this->filmRepository->findAllByCharacterUrl($character->getUrl());
 
+        if ($films->isEmpty()) {
+            throw new NotFoundException('No films found.', Response::HTTP_NOT_FOUND);
+        }
+
         $responseMapper = CharacterFilmListResponseMapperFactory::make($films);
 
         return $responseMapper;

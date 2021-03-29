@@ -3,6 +3,7 @@
 namespace src\Data\Factories;
 
 use src\Data\Entities\Film;
+use src\Data\Mappers\StarshipEntityCollection;
 
 class FilmEntityFactory
 {
@@ -27,5 +28,10 @@ class FilmEntityFactory
             ->setEdited($data['edited']);
             
         return $film;
+    }
+
+    public static function collection(): StarshipEntityCollection
+    {
+        return new StarshipEntityCollection();
     }
 }

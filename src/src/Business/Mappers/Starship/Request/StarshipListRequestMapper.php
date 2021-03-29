@@ -8,7 +8,7 @@ class StarshipListRequestMapper
         private int $passengers
     ) {}
 
-    public function getPassengers(): int
+    public function getPassengers(): ?int
     {
         return $this->passengers;
     }

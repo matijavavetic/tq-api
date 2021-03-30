@@ -1,0 +1,22 @@
+FROM php:8.0-fpm-alpine
+
+COPY . /var/www/sw-api
+
+WORKDIR /var/www/sw-api
+
+RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+ && composer install --no-interaction --optimize-autoloader #--no-dev
+
+RUN chown -R www-data:www-data /var/www/sw-api \
+    && chmod -R 750 /var/www/sw-api
+
+RUN apk update && \
+    apk add  --no-cache grep git mysql-client curl libmcrypt zip libzip libzip-dev libmcrypt-dev openssh-client icu-dev \
+    libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf && \
+    docker-php-ext-configure zip && \
+    docker-php-ext-install pdo pdo_mysql bcmath sockets gd zip && \
+    docker-php-ext-enable pdo pdo_mysql bcmath sockets gd zip
+
+RUN rm -rf /var/cache/apk/*
+
+EXPOSE 9000

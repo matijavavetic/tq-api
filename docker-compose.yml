@@ -1,36 +1,54 @@
 version: '3'
 services:
-  nginx:
-    image: typeqast-api-nginx
-    ports:
-      - 80:80
-    depends_on:
-      - typeqast-api
-    networks:
-      - app-network
-  typeqast-api:
-    image: typeqast-api
+  sw-api:
+    image: sw-api
+    build:
+      context: src/api/
+      dockerfile: Dockerfile
     ports:
       - 9000:9000
     volumes:
-      - ./src/.:/var/www/typeqast-api
+      - ./src/api/.:/var/www/sw-api
     depends_on:
       - mysql
     networks:
       - app-network
+  nginx:
+    image: nginx
+    build:
+      context: src/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - sw-api
+    networks:
+      - app-network
   mysql:
-    image: typeqast-api-mysql
+    image: mysql
+    build:
+      context: src/mysql
+      dockerfile: Dockerfile
     ports:
       - '3306:3306'
     expose:
       - '3306'
     environment:
-      MYSQL_DATABASE: typeqast_api_db
+      MYSQL_DATABASE: sw_api_db
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - dbdata:/var/lib/mysql
     networks:
       - app-network
+  sw-ui:
+    image: 'sw-ui'
+    build:
+      context: src/ui/
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./src/ui/:/#
+      - /node/app/node_modules
 volumes:
   dbdata:
     driver: local

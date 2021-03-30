@@ -27,7 +27,7 @@ cp .env.example .env
 make api-ssh
 composer install
 ```
-##### Run tests in API container
+#### Run tests in API container
 ```
 ./vendor/bin/phpunit
 ./vendor/bin/phpunit --group unit

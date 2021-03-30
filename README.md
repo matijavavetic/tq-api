@@ -1,11 +1,16 @@
 # SWAPI (Star Wars API)
 
-## Clone the repository
+## Postman API documentation
+```
+https://documenter.getpostman.com/view/8192779/TzCLApbq
+```
+
+## Installation
+#### Clone the repository
 ```
 git clone https://github.com/matijavavetic/tq-api.git
 ```
 
-## Installation
 #### Install docker images, up the containers & run local UI server
 ```
 make setup
@@ -17,13 +22,14 @@ cd src/api
 cp .env.example .env
 ```
 
-#### SSH inside the API container and run the tests:
+#### SSH inside the API container and install packages:
 ```
 make api-ssh
+composer install
+```
+#### Run tests in API container
+```
 ./vendor/bin/phpunit
-```
-##### Group testing (optional)
-```
 ./vendor/bin/phpunit --group unit
 ./vendor/bin/phpunit --group integration
 ./vendor/bin/phpunit --group functional

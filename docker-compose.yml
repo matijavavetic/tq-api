@@ -16,7 +16,7 @@ services:
   nginx:
     image: nginx
     build:
-      context: src/api/Docker/nginx
+      context: src/nginx
       dockerfile: Dockerfile
     ports:
       - 80:80
@@ -27,7 +27,7 @@ services:
   mysql:
     image: mysql
     build:
-      context: src/api/Docker/mysql
+      context: src/mysql
       dockerfile: Dockerfile
     ports:
       - '3306:3306'

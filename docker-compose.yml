@@ -1,25 +1,34 @@
 version: '3'
 services:
+  sw-api:
+    image: sw-api
+    build:
+      context: src/api/
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    volumes:
+      - ./src/api/.:/var/www/sw-api
+    depends_on:
+      - mysql
+    networks:
+      - app-network
   nginx:
     image: nginx
+    build:
+      context: src/nginx
+      dockerfile: Dockerfile
     ports:
       - 80:80
     depends_on:
       - sw-api
     networks:
       - app-network
-  sw-api:
-    image: sw-api
-    ports:
-      - 9000:9000
-    volumes:
-      - ./src/.:/var/www/sw-api
-    depends_on:
-      - mysql
-    networks:
-      - app-network
   mysql:
     image: mysql
+    build:
+      context: src/mysql
+      dockerfile: Dockerfile
     ports:
       - '3306:3306'
     expose:
@@ -31,6 +40,15 @@ services:
       - dbdata:/var/lib/mysql
     networks:
       - app-network
+  sw-ui:
+    image: 'sw-ui'
+    build:
+      context: src/ui/
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./src/ui/:/#
+      - /node/app/node_modules
 volumes:
   dbdata:
     driver: local

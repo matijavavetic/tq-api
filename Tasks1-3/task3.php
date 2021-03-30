@@ -4,9 +4,9 @@ function next_binary_number(array $input): string
 {
     $power = count($input) - 1;
     $decimalNumber = 0;
+    $base = 2;
     
     for ($i = 0; $i < count($input); $i++) {
-        $base = 2;
         $currentResult = $input[$i] * $base ** $power;
         $power--;
 

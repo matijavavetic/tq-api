@@ -1,5 +1,7 @@
 # SWAPI (Star Wars API)
 
+SWAPI (Star Wars API) is an API client that serves to extend the original SWAPI.dev with new endpoints that can filter results fetched from the original SWAPI. Visit http://swapi.dev/ for more information about the original SWAPI client.
+
 ## Postman API documentation
 ```
 https://documenter.getpostman.com/view/8192779/TzCLApbq

@@ -5,9 +5,15 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/film',
+    path: '/',
+    name: 'Home',
+    meta: { title: 'SWAPI - Home' }
+  },
+  {
+    path: '/films',
     name: 'Film',
-    component: () => import('../views/Film.vue')
+    component: () => import('../views/Film.vue'),
+    meta: { title: 'SWAPI - Films' }
   }
 ]
 
@@ -16,5 +22,10 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next();
+});
 
 export default router

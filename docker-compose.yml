@@ -49,6 +49,13 @@ services:
     volumes:
       - ./src/ui/:/#
       - /node/app/node_modules
+  memcached:
+    container_name: memcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+    networks:
+      - app-network
 volumes:
   dbdata:
     driver: local

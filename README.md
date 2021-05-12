@@ -1,4 +1,4 @@
-# SWAPI (Star Wars API)
+# SWAPI (Star Wars API) - mini project for practice
 
 SWAPI (Star Wars API) is an API client that serves to extend the original SWAPI.dev with new endpoints that can filter results fetched from the original SWAPI. Visit http://swapi.dev/ for more information about the original SWAPI client.
 

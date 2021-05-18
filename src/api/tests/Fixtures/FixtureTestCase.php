@@ -10,16 +10,20 @@ class FixtureTestCase extends TestCase
 {
     private string $fixturePath;
     protected EntityManager $em;
+    private static $setup = false;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->em = app('em');
-
         $this->fixturePath =  base_path().'/tests/Fixtures/StarshipFixture.yml';
 
-        $this->loadFixtures();
+        if (! static::$setup) {
+            $this->loadFixtures();
+
+            static::$setup = true;
+        }
     }
 
     private function loadFixtures(): void

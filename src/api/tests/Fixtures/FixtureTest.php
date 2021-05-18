@@ -19,7 +19,7 @@ class FixtureTest extends FixtureTestCase
         $this->starshipRepository = $this->em->getRepository(Starship::class);
     }
 
-    public function testDatabaseHasLoadedFixtureData(): void
+    public function testDatabaseHasLoadedFixturesData(): void
     {
         $this->assertDatabaseHas('planet', [
             'name' => 'Test Planet',
@@ -45,7 +45,7 @@ class FixtureTest extends FixtureTestCase
         $planetEntity = $planet[0];
         $starshipEntity = $starship[0];
 
-        $this->assertEquals('Test Starship', $planetEntity->getStarships()[0]->getName());
-        $this->assertEquals('Test Planet', $starshipEntity->getPlanet()->getName());
+        $this->assertEquals($starshipEntity, $planetEntity->getStarships()[0]);
+        $this->assertEquals($planetEntity, $starshipEntity->getPlanet());
     }
 }

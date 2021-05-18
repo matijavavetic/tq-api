@@ -42,7 +42,7 @@ class Starship
     public function __construct(
         string $name, 
         string $model, 
-        string $passengers
+        int $passengers
     ) {
         $this->name = $name;
         $this->model = $model;

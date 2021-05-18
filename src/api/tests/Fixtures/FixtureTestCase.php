@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class FixtureTestCase extends TestCase
 {
-    private array $fixturePaths;
+    private string $fixturePath;
     protected EntityManager $em;
 
     protected function setUp(): void
@@ -17,10 +17,7 @@ class FixtureTestCase extends TestCase
 
         $this->em = app('em');
 
-        $this->fixturePaths = [
-            //base_path().'/tests/Fixtures/PlanetFixture.yml',
-            base_path().'/tests/Fixtures/StarshipFixture.yml'
-        ];
+        $this->fixturePath =  base_path().'/tests/Fixtures/StarshipFixture.yml';
 
         $this->loadFixtures();
     }
@@ -29,12 +26,10 @@ class FixtureTestCase extends TestCase
     {
         $loader = new NativeLoader();
 
-        foreach ($this->fixturePaths as $fixturePath) {
-            $resultSet = $loader->loadFile($fixturePath);
+        $resultSet = $loader->loadFile($this->fixturePath);
 
-            foreach ($resultSet->getObjects() as $object) {
-                $this->em->persist($object);
-            }
+        foreach ($resultSet->getObjects() as $object) {
+            $this->em->persist($object);
         }
 
         $this->em->flush();

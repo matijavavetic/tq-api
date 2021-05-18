@@ -1,0 +1,17 @@
+# Example when instantiating entities through setters
+# Note: "__construct: false" is used to skip entity constructor
+
+src\Data\Entities\Starship:
+    starship{1..25}:
+      __construct: false
+      name: '<name()>'
+      model: '<name()>'
+      passengers: <numberBetween(10, 5000)>
+
+src\Data\Entities\Planet:
+    planet{1..10}:
+        __construct: false
+        name: '<name()>'
+        gravity: '<name()>'
+        population: <numberBetween(0, 50000)>
+        starships: '2x @starship*' # Adds 2 random Starship entities to relation

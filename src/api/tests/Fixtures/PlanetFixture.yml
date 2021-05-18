@@ -1,0 +1,10 @@
+# Example when instantiating entities through constructor
+
+src\Data\Entities\Planet:
+    planet{1..10}:
+        __construct: ['<name()>', '<name()>', '<numberBetween(0, 15000)>']
+
+src\Data\Entities\Starship:
+    starship{1..5}:
+      __construct: ['<name()>', '<name()>', '<numberBetween(0, 15000)>']
+      planet: '@planet<current()>' # Sets current iteration of Planet entity as a relation

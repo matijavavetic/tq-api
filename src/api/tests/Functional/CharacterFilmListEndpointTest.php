@@ -2,6 +2,7 @@
 
 namespace Tests\Functional;
 
+use Nelmio\Alice\Loader\NativeLoader;
 use Tests\TestCase;
 use src\Business\Exceptions\NotFoundException;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ class CharacterFilmListEndpointTest extends TestCase
 
     public function testSendValidDataExceptOkResponse(): void
     {
+
         $payload = [
             'characterName' => 'Luke Skywalker'
         ];

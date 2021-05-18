@@ -5,6 +5,7 @@ namespace src\Data\Entities;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Mapping AS ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 use phpDocumentor\Reflection\Types\String_;
 use src\Data\Entities\Starship;
 
@@ -38,7 +39,6 @@ class Planet
 
     /**
     * @ORM\OneToMany(targetEntity="Starship", mappedBy="planet", cascade={"persist"})
-    * @var ArrayCollection|Starship[]
     */
     private $starships;
 
@@ -95,7 +95,7 @@ class Planet
         }
     }
 
-    public function getStarships(): ?ArrayCollection
+    public function getStarships()
     {
         return $this->starships;
     }

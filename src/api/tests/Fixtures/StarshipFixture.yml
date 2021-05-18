@@ -2,16 +2,29 @@
 # Note: "__construct: false" is used to skip entity constructor
 
 src\Data\Entities\Starship:
-    starship{1..25}:
-      __construct: false
-      name: '<name()>'
-      model: '<name()>'
-      passengers: <numberBetween(10, 5000)>
+  starship1:
+    __construct: false
+    name: 'Test Starship'
+    model: 'Test Model Starship'
+    passengers: 65535
+
+  starship{2..25}:
+    __construct: false
+    name: '<name()>'
+    model: '<name()>'
+    passengers: <numberBetween(10, 5000)>
 
 src\Data\Entities\Planet:
-    planet{1..10}:
-        __construct: false
-        name: '<name()>'
-        gravity: '<name()>'
-        population: <numberBetween(0, 50000)>
-        starships: '2x @starship*' # Adds 2 random Starship entities to relation
+  planet1:
+    __construct: false
+    name: 'Test Planet'
+    gravity: 'Test Gravity'
+    population: 65535
+    starships: ['@starship1']
+
+  planet{2..10}:
+    __construct: false
+    name: '<name()>'
+    gravity: '<name()>'
+    population: <numberBetween(0, 50000)>
+    starships: '2x @starship<numberBetween(2, 25)>' # Adds 2 Starship entities with ID between 2 and 25 to relation

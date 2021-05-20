@@ -4,6 +4,8 @@ namespace src\Data\Entities;
 
 use Doctrine\ORM\Mapping AS ORM;
 use src\Data\Entities\Planet;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity
@@ -17,6 +19,11 @@ class Starship
      * @ORM\Column(type="integer")
      */
     private int $id;
+
+    /**
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    private string $uuid;
 
     /**
      * @ORM\Column(type="string")
@@ -40,13 +47,13 @@ class Starship
     private Planet $planet;
 
     public function __construct(
-        string $name, 
-        string $model, 
-        int $passengers
     ) {
-        $this->name = $name;
-        $this->model = $model;
-        $this->passengers = $passengers;
+        $this->uuid = Uuid::uuid4()->toString();
+    }
+
+    public function getUuid()
+    {
+        return $this->uuid;
     }
     
     public function setName(string $name): void

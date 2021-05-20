@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping AS ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\PersistentCollection;
 use phpDocumentor\Reflection\Types\String_;
+use Ramsey\Uuid\Uuid;
 use src\Data\Entities\Starship;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Entity
@@ -21,6 +23,11 @@ class Planet
      * @ORM\Column(type="integer")
      */
     private int $id;
+
+    /**
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    private string $uuid;
 
     /**
      * @ORM\Column(type="string")
@@ -43,14 +50,13 @@ class Planet
     private $starships;
 
     public function __construct(
-        string $name, 
-        string $gravity, 
-        int $population
     ) {
-        $this->name = $name;
-        $this->gravity = $gravity;
-        $this->population = $population;
-        $this->starships = new ArrayCollection;
+        $this->uuid = Uuid::uuid4()->toString();
+    }
+
+    public function getUuid()
+    {
+        return $this->uuid;
     }
 
     public function setName(string $name): void

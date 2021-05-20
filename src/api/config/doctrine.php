@@ -1,5 +1,7 @@
 <?php
 
+use Ramsey\Uuid\Doctrine\UuidType;
+
 return [
 
     /*
@@ -27,7 +29,7 @@ return [
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],
             'paths'         => [
-                base_path('src/Data/Entities')
+                base_path('app/Data/Entities')
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [
@@ -108,6 +110,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'custom_types'               => [
+        'uuid' => UuidType::class
     ],
     /*
     |--------------------------------------------------------------------------
